@@ -128,4 +128,9 @@ export class AuthSignInComponent implements OnInit {
             }
         );
     }
+
+    protected signUp() {
+        // Navigate to the sign-up page
+        this._router.navigate(['/sign-up']);
+    }
 }

@@ -154,6 +154,40 @@ export class AuthService {
     }
 
     /**
+     * Admin login
+     *
+     * @param credentials
+     */
+    loginadmin(credentials: { email: string; password: string }): Observable<any> {
+        // Throw error, if the user is already logged in
+        if (this._authenticated) {
+            return throwError('User is already logged in.');
+        }
+
+        return this._httpClient.post('api/auth/login', null, {
+            params: {
+                email: credentials.email,
+                password: credentials.password,
+            },
+        }).pipe(
+            switchMap((response: any) => {
+                // Store the access token in the local storage
+                // Note: The API doesn't return an accessToken, so we'll create a mock one
+                this.accessToken = 'admin-token-' + Date.now();
+
+                // Set the authenticated flag to true
+                this._authenticated = true;
+
+                // Store the user on the user service
+                this._userService.user = response;
+
+                // Return a new observable with the response
+                return of(response);
+            })
+        );
+    }
+
+    /**
      * Check the authentication status
      */
     check(): Observable<boolean> {

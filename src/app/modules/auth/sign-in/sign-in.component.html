@@ -7,7 +7,7 @@
         <div class="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
             <!-- Logo -->
             <div class="w-12">
-                <img src="images/logo/logo.svg" />
+                <img src="/public/images/sherbrooke/img.png"/>
             </div>
 
             <!-- Title -->
@@ -37,7 +37,7 @@
             <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm">
                 <!-- Email field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Addresse Email</mat-label>
+                    <mat-label>Adress mail</mat-label>
                     <input id="email" matInput [formControlName]="'email'" />
                     @if (signInForm.get('email').hasError('required')) {
                         <mat-error> Email address is required </mat-error>
@@ -51,7 +51,7 @@
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Mot de passe</mat-label>
+                    <mat-label>Password</mat-label>
                     <input
                         id="password"
                         matInput
@@ -102,7 +102,7 @@
                     (click)="signIn()"
                 >
                     @if (!signInForm.disabled) {
-                        <span> Connexion </span>
+                        <span> Sign In </span>
                     }
                     @if (signInForm.disabled) {
                         <mat-progress-spinner
@@ -115,10 +115,33 @@
                 <!-- Separator -->
                 <div class="mt-8 flex items-center">
                     <div class="mt-px flex-auto border-t"></div>
-                    <div class="text-secondary mx-2">Or continue avec</div>
+                    <div class="text-secondary mx-2">Click for Register</div>
                     <div class="mt-px flex-auto border-t"></div>
                 </div>
 
+                <button
+                        class="fuse-mat-button-large mt-6 w-full"
+                        mat-flat-button
+                        [color]="'primary'"
+                        [disabled]="signInForm.disabled"
+                        (click)="signUp()"
+                >
+                    @if (!signInForm.disabled) {
+                        <span> Register </span>
+                    }
+                    @if (signInForm.disabled) {
+                        <mat-progress-spinner
+                                [diameter]="24"
+                                [mode]="'indeterminate'"
+                        ></mat-progress-spinner>
+                    }
+                </button>
+
+                <div class="mt-8 flex items-center">
+                    <div class="mt-px flex-auto border-t"></div>
+                    <div class="text-secondary mx-2">Or continue with</div>
+                    <div class="mt-px flex-auto border-t"></div>
+                </div>
                 <!-- Single sign-on buttons -->
                 <div class="mt-8 flex items-center space-x-4">
                     <button class="flex-auto" type="button" mat-stroked-button>
@@ -170,11 +193,11 @@
         <!-- Content -->
         <div class="relative z-10 w-full max-w-2xl">
             <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Bienvenue</div>
+                <div>Welcome</div>
                 <h6>dans mon application Bloc notes</h6>
             </div>
             <div class="mt-6 text-lg leading-6 tracking-tight text-gray-400">
-                Amdouni Bilel
+                Gasmi Firial
             </div>
 
         </div>
