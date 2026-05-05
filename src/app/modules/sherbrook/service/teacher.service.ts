@@ -23,6 +23,8 @@ export class TeacherService {
 
   // Ajouter un professeur
   addTeacher(teacher: Partial<TeacherModel>): Observable<TeacherModel> {
+    console.log('Envoi du professeur:', teacher);
+    console.log('URL de l\'API:', this.apiUrl);
     return this.http.post<TeacherModel>(this.apiUrl, teacher);
   }
 
