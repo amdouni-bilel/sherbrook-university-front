@@ -85,15 +85,23 @@ else
             icon: 'heroicons_outline:home',
             children: [
                 {
-                    id: 'dashboards.notes',
-                    title: 'Taches',
+                    id: 'dashboards.teachers',
+                    title: 'Teachers',
                     type: 'basic',
                     icon: 'heroicons_outline:clipboard-document-check',
-                    link: '/list-tasks',
+                    link: '/list-teachers',
                 },
                 {
-                    id: 'dashboards.finance',
-                    title: 'Utilisateurs',
+                    id: 'dashboards.administrators',
+                    title: 'Administrators',
+                    type: 'basic',
+                    icon: 'heroicons_outline:user-group',
+                    link: '/list-users',
+                }
+                ,
+                {
+                    id: 'dashboards.students',
+                    title: 'Students',
                     type: 'basic',
                     icon: 'heroicons_outline:user-group',
                     link: '/list-users',
