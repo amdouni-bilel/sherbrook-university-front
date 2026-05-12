@@ -35,16 +35,37 @@
                     class="bg-white mt-8 flex w-full flex-col space-y-6 rounded-2xl p-8 shadow"
                     [formGroup]="userForm"
             >
-                <!-- Inputs -->
+                <!-- Inputs prénom / nom -->
                 <div class="flex flex-wrap gap-4 w-full">
                     <mat-form-field class="flex-1 min-w-[200px]">
-                        <mat-label>Nom d'utilisateur</mat-label>
-                        <input matInput formControlName="username" autocomplete="off" />
+                        <mat-label>Prénom</mat-label>
+                        <input matInput formControlName="firstName" autocomplete="off" />
                     </mat-form-field>
 
                     <mat-form-field class="flex-1 min-w-[200px]">
+                        <mat-label>Nom</mat-label>
+                        <input matInput formControlName="lastName" autocomplete="off" />
+                    </mat-form-field>
+                </div>
+
+                <!-- Email et Téléphone -->
+                <div class="flex flex-wrap gap-4 w-full">
+                    <mat-form-field class="flex-1 min-w-[200px]">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" autocomplete="off" />
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-1 min-w-[200px]">
+                        <mat-label>Téléphone</mat-label>
+                        <input matInput formControlName="phone" autocomplete="off" />
+                    </mat-form-field>
+                </div>
+
+                <!-- Département -->
+                <div class="flex flex-wrap gap-4 w-full">
+                    <mat-form-field class="flex-1 min-w-[200px]">
+                        <mat-label>Département</mat-label>
+                        <input matInput formControlName="department" autocomplete="off" />
                     </mat-form-field>
                 </div>
 

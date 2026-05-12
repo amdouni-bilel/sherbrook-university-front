@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TeacherModel } from "../models/teacher.model";
+import {TeacherModel} from "../models/teacher.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
-  private apiUrl: string = 'http://localhost:8080/api/teachers';
+  private apiUrl: string = 'http://localhost:8080/api/teachers'; // adapte si ton backend est sur un autre port
 
   constructor(private http: HttpClient) {}
 
@@ -38,4 +38,3 @@ export class TeacherService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
-

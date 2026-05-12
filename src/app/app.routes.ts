@@ -82,6 +82,8 @@ export const appRoutes: Route[] = [
         children: [
 // 
                   {path: 'list-users', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
+                  {path: 'list-administrators', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
+                  {path: 'list-students', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
                   {path: 'add-user', loadChildren: () => import('app/modules/sherbrook/components/users/add-user/add-user-components.routes')},
                   {path: 'list-tasks', loadChildren: () => import('app/modules/sherbrook/components/tasks/list-tasks/list-tasks-components.routes')},
                   {path: 'add-task', loadChildren: () => import('app/modules/sherbrook/components/tasks/add-task/add-tasks-components.routes')},

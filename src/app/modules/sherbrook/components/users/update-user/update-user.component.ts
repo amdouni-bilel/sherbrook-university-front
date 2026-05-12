@@ -37,15 +37,21 @@ export class UpdateUserComponent implements OnInit {
 
     ngOnInit(): void {
         this.userForm = this.fb.group({
-            username: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]]
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            phone: [''],
+            department: ['']
         });
 
         this.userId = +this.route.snapshot.paramMap.get('id')!;
         this.userService.getUserById(this.userId).subscribe(user => {
             this.userForm.patchValue({
-                username: user.username,
-                email: user.email
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                phone: user.phone,
+                department: user.department
             });
         });
     }
@@ -53,8 +59,11 @@ export class UpdateUserComponent implements OnInit {
     reset(): void {
         this.userService.getUserById(this.userId).subscribe(user => {
             this.userForm.patchValue({
-                username: user.username,
-                email: user.email
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                phone: user.phone,
+                department: user.department
             });
         });
     }
