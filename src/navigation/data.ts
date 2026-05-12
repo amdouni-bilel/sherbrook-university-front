@@ -93,19 +93,20 @@ else
                 },
                 {
                     id: 'dashboards.administrators',
-                    title: 'Administrateurs',
+                    title: 'Utilisateurs',
                     type: 'basic',
                     icon: 'heroicons_outline:shield-check',
-                    link: '/list-administrators',
+                    link: '/list-users',
                 }
                 ,
+
                 {
-                    id: 'dashboards.students',
-                    title: 'Etudiants',
+                    id: 'dashboards.notes',
+                    title: 'Taches',
                     type: 'basic',
-                    icon: 'heroicons_outline:academic-cap',
-                    link: '/list-students',
-                }
+                    icon: 'heroicons_outline:clipboard-document-check',
+                    link: '/list-tasks',
+                },
             ],
         },
     /*    {
