@@ -133,4 +133,20 @@ export class AuthSignInComponent implements OnInit {
         // Navigate to the sign-up page
         this._router.navigate(['/sign-up']);
     }
+
+    /**
+     * Open social media link
+     */
+    openSocialMedia(platform: string): void {
+        const urls: { [key: string]: string } = {
+            facebook: 'https://www.facebook.com',
+            twitter: 'https://www.twitter.com',
+            github: 'https://www.github.com'
+        };
+
+        const url = urls[platform];
+        if (url) {
+            window.open(url, '_blank');
+        }
+    }
 }

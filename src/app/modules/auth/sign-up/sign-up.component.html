@@ -2,16 +2,16 @@
     <div class="w-full px-4 py-8 sm:bg-card sm:w-auto sm:rounded-2xl sm:p-12 sm:shadow md:flex md:h-full md:w-1/2 md:items-center md:justify-end md:rounded-none md:p-16 md:shadow-none">
         <div class="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
             <!-- Logo -->
-            <div class="w-12">
-                <img src="images/logo/logo.svg" />
+            <div class="flex justify-center mb-8">
+                <img src="images/sherbrooke/img_1.png" class="h-24 w-auto"/>
             </div>
 
             <!-- Title -->
             <div class="mt-8 text-4xl font-extrabold leading-tight tracking-tight">
-                Create a profile
+                Créer un profil
             </div>
             <div class="mt-0.5 flex items-baseline font-medium">
-                <div>You have already an account ?</div>
+                <div>Vous avez déjà un compte ?</div>
                 <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-in']">Connexion</a>
             </div>
 
@@ -31,7 +31,7 @@
             <form class="mt-8" [formGroup]="signUpForm" #signUpNgForm="ngForm">
                 <!-- First Name field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Fisrt Name</mat-label>
+                    <mat-label>Prénom</mat-label>
                     <input id="firstName" matInput [formControlName]="'firstName'" />
                     <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">
                         Le prénom est requis
@@ -40,7 +40,7 @@
 
                 <!-- Last Name field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Last Name</mat-label>
+                    <mat-label>Nom de famille</mat-label>
                     <input id="lastName" matInput [formControlName]="'lastName'" />
                     <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">
                         Le nom de famille est requis
@@ -49,7 +49,7 @@
 
                 <!-- Speciality field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Speciality</mat-label>
+                    <mat-label>Spécialité</mat-label>
                     <input id="speciality" matInput [formControlName]="'speciality'" />
                     <mat-error *ngIf="signUpForm.get('speciality').hasError('required')">
                         La spécialité est requise
@@ -87,7 +87,7 @@
 
                 <!-- Phone field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Number</mat-label>
+                    <mat-label>Numéro de téléphone</mat-label>
                     <input id="tel" matInput [formControlName]="'tel'" />
                     <mat-error *ngIf="signUpForm.get('tel').hasError('required')">
                         Le numéro de téléphone est requis
@@ -96,7 +96,7 @@
 
                 <!-- Birthday field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Birth Day</mat-label>
+                    <mat-label>Date de naissance</mat-label>
                     <input id="birthday" matInput type="date" [formControlName]="'birthday'" />
                     <mat-error *ngIf="signUpForm.get('birthday').hasError('required')">
                         La date de naissance est requise
@@ -119,10 +119,10 @@
                             [color]="'primary'"
                             [formControlName]="'agreements'"
                     >
-                        <span>I accept the</span>
-                        <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['./']">Terms of Use </a>
-                        <span>and the</span>
-                        <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['./']">Privacy Policy</a>
+                        <span>J'accepte les</span>
+                        <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['./']">Conditions d'utilisation</a>
+                        <span>et la</span>
+                        <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['./']">Politique de confidentialité</a>
                     </mat-checkbox>
                 </div>
 
@@ -139,7 +139,7 @@
                             *ngIf="signUpForm.disabled"
                             [diameter]="24"
                             [mode]="'indeterminate'"
-                    ></mat-progress-spinner> Sign Up
+                    ></mat-progress-spinner> S'inscrire
                 </button>
             </form>
         </div>
@@ -163,12 +163,17 @@
         </svg>
         <!-- Content -->
         <div class="relative z-10 w-full max-w-2xl">
-            <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Complétez votre</div>
-                <div>profil universitaire</div>
+            <!-- Logo -->
+            <div class="mb-8 flex justify-center">
+                <img src="images/sherbrooke/img_1.png" class="h-32 w-auto"/>
             </div>
-            <div class="mt-6 text-lg leading-6 tracking-tight text-gray-400">
-                Créez votre profil personnalisé de l'Université de Sherbrooke. Fournissez vos informations pour rejoindre la communauté universitaire et accéder à tous les services.
+
+            <div class="text-7xl font-bold leading-none text-gray-100">
+                <div>Rejoignez</div>
+                <div class="text-3xl font-semibold text-primary-400 mt-2">Université de Sherbrooke</div>
+            </div>
+            <div class="mt-6 text-lg leading-6 tracking-tight text-gray-300">
+                Complétez votre profil pour accéder à tous les services universitaires. Représentez votre spécialité et connectez-vous avec votre communauté académique.
             </div>
             <div class="mt-8 flex items-center">
                 <div class="flex flex-0 items-center -space-x-1.5">
@@ -189,8 +194,8 @@
                             src="images/avatars/male-16.jpg"
                     />
                 </div>
-                <div class="ml-4 font-medium tracking-tight text-gray-400">
-                    Plus de 17k personnes nous ont rejoints, c'est votre tour
+                <div class="ml-4 font-medium tracking-tight text-gray-300">
+                    Plus de 17k étudiants actifs, rejoignez-nous dès maintenant
                 </div>
             </div>
         </div>

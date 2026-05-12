@@ -85,7 +85,7 @@ export class AuthSignUpComponent implements OnInit {
     /**
      * Sign up admin
      */
-    signUp(): void {
+    /*signUp(): void {
         // Do nothing if the form is invalid
         if (this.signUpForm.invalid) {
             return;
@@ -125,5 +125,42 @@ export class AuthSignUpComponent implements OnInit {
                     this.showAlert = true;
                 }
             );
+    }*/
+
+    signUp(): void {
+        if (this.signUpForm.invalid) {
+            return;
+        }
+
+        this.signUpForm.disable();
+        this.showAlert = false;
+
+        const student = {
+            firstName: this.signUpForm.value.firstName,
+            lastName: this.signUpForm.value.lastName,
+            email: this.signUpForm.value.email,
+            password: this.signUpForm.value.password,
+            tel: this.signUpForm.value.tel,
+            speciality: this.signUpForm.value.speciality,
+            birthday: this.signUpForm.value.birthday,
+            score: this.signUpForm.value.score,
+        };
+
+        this._authService.registerStudent(student).subscribe({
+            next: () => {
+                // Redirection après inscription
+                this._router.navigateByUrl('/sign-in');
+            },
+            error: () => {
+                this.signUpForm.enable();
+                this.alert = {
+                    type: 'error',
+                    message: 'Erreur lors de la création du compte étudiant',
+                };
+                this.showAlert = true;
+            },
+        });
     }
+
+
 }

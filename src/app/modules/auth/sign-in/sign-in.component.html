@@ -6,8 +6,8 @@
     >
         <div class="mx-auto w-full max-w-80 sm:mx-0 sm:w-80">
             <!-- Logo -->
-            <div class="w-12">
-                <img src="/public/images/sherbrooke/img.png"/>
+            <div class="flex justify-center mb-8">
+                <img src="images/sherbrooke/img_1.png" class="h-24 w-auto"/>
             </div>
 
             <!-- Title -->
@@ -37,21 +37,21 @@
             <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm">
                 <!-- Email field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Adress mail</mat-label>
+                    <mat-label>Adresse email</mat-label>
                     <input id="email" matInput [formControlName]="'email'" />
                     @if (signInForm.get('email').hasError('required')) {
-                        <mat-error> Email address is required </mat-error>
+                        <mat-error> L'adresse email est requise </mat-error>
                     }
                     @if (signInForm.get('email').hasError('email')) {
                         <mat-error>
-                            Please enter a valid email address
+                            Veuillez entrer une adresse email valide
                         </mat-error>
                     }
                 </mat-form-field>
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
+                    <mat-label>Mot de passe</mat-label>
                     <input
                         id="password"
                         matInput
@@ -82,7 +82,7 @@
                             ></mat-icon>
                         }
                     </button>
-                    <mat-error> Password is required </mat-error>
+                    <mat-error> Le mot de passe est requis </mat-error>
                 </mat-form-field>
 
                 <!-- Actions -->
@@ -102,7 +102,7 @@
                     (click)="signIn()"
                 >
                     @if (!signInForm.disabled) {
-                        <span> Sign In </span>
+                        <span> Se connecter </span>
                     }
                     @if (signInForm.disabled) {
                         <mat-progress-spinner
@@ -115,7 +115,7 @@
                 <!-- Separator -->
                 <div class="mt-8 flex items-center">
                     <div class="mt-px flex-auto border-t"></div>
-                    <div class="text-secondary mx-2">Click for Register</div>
+                    <div class="text-secondary mx-2">Cliquez pour vous inscrire</div>
                     <div class="mt-px flex-auto border-t"></div>
                 </div>
 
@@ -127,7 +127,7 @@
                         (click)="signUp()"
                 >
                     @if (!signInForm.disabled) {
-                        <span> Register </span>
+                        <span> S'inscrire </span>
                     }
                     @if (signInForm.disabled) {
                         <mat-progress-spinner
@@ -139,24 +139,39 @@
 
                 <div class="mt-8 flex items-center">
                     <div class="mt-px flex-auto border-t"></div>
-                    <div class="text-secondary mx-2">Or continue with</div>
+                    <div class="text-secondary mx-2">Ou continuer avec</div>
                     <div class="mt-px flex-auto border-t"></div>
                 </div>
                 <!-- Single sign-on buttons -->
                 <div class="mt-8 flex items-center space-x-4">
-                    <button class="flex-auto" type="button" mat-stroked-button>
+                    <button
+                        class="flex-auto"
+                        type="button"
+                        mat-stroked-button
+                        (click)="openSocialMedia('facebook')"
+                    >
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'feather:facebook'"
                         ></mat-icon>
                     </button>
-                    <button class="flex-auto" type="button" mat-stroked-button>
+                    <button
+                        class="flex-auto"
+                        type="button"
+                        mat-stroked-button
+                        (click)="openSocialMedia('twitter')"
+                    >
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'feather:twitter'"
                         ></mat-icon>
                     </button>
-                    <button class="flex-auto" type="button" mat-stroked-button>
+                    <button
+                        class="flex-auto"
+                        type="button"
+                        mat-stroked-button
+                        (click)="openSocialMedia('github')"
+                    >
                         <mat-icon
                             class="icon-size-5"
                             [svgIcon]="'feather:github'"
@@ -192,12 +207,21 @@
         </svg>
         <!-- Content -->
         <div class="relative z-10 w-full max-w-2xl">
-            <div class="text-7xl font-bold leading-none text-gray-100">
-                <div>Welcome</div>
-                <h6>dans mon application Bloc notes</h6>
+            <!-- Logo -->
+            <div class="mb-8 flex justify-center">
+                <img src="images/sherbrooke/img_1.png" class="h-32 w-auto"/>
             </div>
-            <div class="mt-6 text-lg leading-6 tracking-tight text-gray-400">
-                Gasmi Firial
+
+            <div class="text-7xl font-bold leading-none text-gray-100">
+                <div>Bienvenue</div>
+                <div class="text-3xl font-semibold text-primary-400 mt-2">Université de Sherbrooke</div>
+            </div>
+            <div class="mt-6 text-lg leading-6 tracking-tight text-gray-300">
+                Gérez votre expérience universitaire complète en un seul endroit. Accédez à vos cours, vos documents, et communiquez avec votre communauté académique.
+            </div>
+            <div class="mt-4 flex items-center space-x-2 text-sm text-gray-400">
+                <mat-icon class="icon-size-4" [svgIcon]="'heroicons_outline:check-circle'"></mat-icon>
+                <span>Plateforme sécurisée et fiable</span>
             </div>
 
         </div>

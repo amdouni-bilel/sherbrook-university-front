@@ -142,6 +142,33 @@ export class AuthService {
     }
 
     /**
+     * Register student
+     */
+    registerStudent(student: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        password: string;
+        tel: string;
+        speciality: string;
+        birthday: string;
+        score: number;
+    }): Observable<any> {
+        const payload = {
+            ...student,
+            role: 'STUDENT',
+            status: 'PENDING',
+            validated: false,
+        };
+
+        return this._httpClient.post(
+            'http://localhost:8080/api/students',
+            payload
+        );
+    }
+
+
+    /**
      * Unlock session
      *
      * @param credentials
