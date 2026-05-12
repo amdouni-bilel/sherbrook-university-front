@@ -5,10 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {Router, RouterLink} from '@angular/router';
+import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {TeacherService} from "../../../service/teacher.service";
-import {MatIconModule} from "@angular/material/icon";
+import { TeacherService } from '../../../service/teacher.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-teacher',
@@ -21,11 +21,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatButtonModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    RouterLink,
     MatIconModule
   ],
   templateUrl: './add-teacher.component.html',
-  styleUrl: './add-teacher.component.scss'
+  styleUrls: ['./add-teacher.component.scss']
 })
 export class AddTeacherComponent implements OnInit {
   teacherForm!: FormGroup;
@@ -42,33 +41,29 @@ export class AddTeacherComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: [''],
+      tel: [''],
       department: ['']
     });
   }
 
   save(): void {
-    if (this.teacherForm.invalid)
+    if (this.teacherForm.invalid) {
       return;
+    }
 
-    this.teacherService.addTeacher(this.teacherForm.value).subscribe({
-      next: (teacher) => {
-        this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', {
-          duration: 3000
-        });
-        this.router.navigate(['/list-teachers']);
-      },
-      error: (err) => {
-        console.error('Erreur lors de l\'ajout', err);
-        this.snackBar.open(`Erreur lors de l'ajout du professeur.`, 'Fermer', {
-          duration: 3000
-        });
-      }
-    });
+    this.teacherService.addTeacher(this.teacherForm.value).subscribe(
+        () => {
+          this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', { duration: 3000 });
+          this.router.navigate(['/list-teachers']);
+        },
+        (err) => {
+          this.snackBar.open('Erreur lors de l’ajout du professeur.', 'Fermer', { duration: 3000 });
+          console.error(err);
+        }
+    ); // ✅ version concise
   }
 
   reset(): void {
     this.teacherForm.reset();
   }
 }
-

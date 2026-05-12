@@ -96,7 +96,7 @@ else
                     title: 'Administrateurs',
                     type: 'basic',
                     icon: 'heroicons_outline:user-group',
-                    link: '/list-users',
+                    link: '/list-administrators',
                 }
                 ,
                 {
@@ -104,7 +104,7 @@ else
                     title: 'Etudiants',
                     type: 'basic',
                     icon: 'heroicons_outline:user-group',
-                    link: '/list-users',
+                    link: '/list-students',
                 }
             ],
         },

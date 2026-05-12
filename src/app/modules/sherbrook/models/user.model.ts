@@ -1,7 +1,10 @@
 export interface UserModel {
     id: number;
-    username: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    createdAt: string; 
+    phone?: string;
+    department?: string;
+    createdAt: string;
     updatedAt: string;
 }

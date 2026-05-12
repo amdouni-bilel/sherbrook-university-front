@@ -4,7 +4,6 @@ import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatDrawerContainer} from "@angular/material/sidenav";
 import {MatTooltip} from "@angular/material/tooltip";
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
-import {TeacherModel} from "../../../models/teacher.model";
 import {RouterLink} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -12,7 +11,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-
+import {TeacherModel} from "../../../models/teacher.model";
 @Component({
   selector: 'app-list-teachers',
   standalone: true,
@@ -33,10 +32,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatIconModule
   ],
   templateUrl: './list-teachers.component.html',
-  styleUrl: './list-teachers.component.scss'
+  styleUrls: ['./list-teachers.component.scss']
 })
-export class ListTeachersComponent implements OnInit{
-  teachers: TeacherModel[] = [];
+export class ListTeachersComponent implements OnInit {
+  teachers: TeacherModel[] = [];   // ✅ utilisé ici comme type
   loading: boolean = true;
   error: string | null = null;
 
@@ -51,6 +50,7 @@ export class ListTeachersComponent implements OnInit{
       next: (teachers) => {
         this.teachers = teachers;
         this.loading = false;
+        console.log('Professeurs chargés :', this.teachers);
       },
       error: (err) => {
         this.error = 'Erreur lors du chargement des professeurs';
@@ -74,6 +74,4 @@ export class ListTeachersComponent implements OnInit{
       });
     }
   }
-
 }
-

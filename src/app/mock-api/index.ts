@@ -8,6 +8,8 @@ import { MailboxMockApi } from 'app/mock-api/apps/mailbox/api';
 import { NotesMockApi } from 'app/mock-api/apps/notes/api';
 import { ScrumboardMockApi } from 'app/mock-api/apps/scrumboard/api';
 import { TasksMockApi } from 'app/mock-api/apps/tasks/api';
+import { UsersMockApi } from 'app/mock-api/apps/users/api';
+import { TeachersMockApi } from 'app/mock-api/apps/teachers/api';
 import { AuthMockApi } from 'app/mock-api/common/auth/api';
 import { MessagesMockApi } from 'app/mock-api/common/messages/api';
 import { NavigationMockApi } from 'navigation/api';
@@ -46,4 +48,6 @@ export const mockApiServices = [
     ShortcutsMockApi,
     TasksMockApi,
     UserMockApi,
+    UsersMockApi,
+    TeachersMockApi,
 ];
