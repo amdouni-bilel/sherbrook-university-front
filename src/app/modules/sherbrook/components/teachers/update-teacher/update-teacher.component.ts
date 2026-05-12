@@ -6,7 +6,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {TeacherService} from '../../../service/teacher.service';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {FakeTeacherService} from '../../../service/fake-teacher.service';
 
 @Component({
     selector: 'app-update-teacher',
@@ -18,7 +20,9 @@ import {TeacherService} from '../../../service/teacher.service';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatSelectModule,
+        MatSnackBarModule
     ],
     templateUrl: './update-teacher.component.html',
     styleUrl: './update-teacher.component.scss'
@@ -26,12 +30,14 @@ import {TeacherService} from '../../../service/teacher.service';
 export class UpdateTeacherComponent implements OnInit {
     teacherForm!: FormGroup;
     teacherId!: number;
+    departments: string[] = ['Informatique', 'Mathématiques', 'Physique', 'Chimie', 'Biologie'];
 
     constructor(
         private fb: FormBuilder,
         private route: ActivatedRoute,
-        private teacherService: TeacherService,
-        private router: Router
+        private fakeTeacherService: FakeTeacherService,
+        private router: Router,
+        private snackBar: MatSnackBar
     ) {
     }
 
@@ -45,7 +51,12 @@ export class UpdateTeacherComponent implements OnInit {
         });
 
         this.teacherId = +this.route.snapshot.paramMap.get('id')!;
-        this.teacherService.getTeacherById(this.teacherId).subscribe(teacher => {
+        this.loadTeacher();
+    }
+
+    loadTeacher(): void {
+        const teacher = this.fakeTeacherService.getTeachers().find(t => t.id === this.teacherId);
+        if (teacher) {
             this.teacherForm.patchValue({
                 firstName: teacher.firstName,
                 lastName: teacher.lastName,
@@ -53,26 +64,32 @@ export class UpdateTeacherComponent implements OnInit {
                 phone: teacher.phone,
                 department: teacher.department
             });
-        });
+        }
     }
 
     reset(): void {
-        this.teacherService.getTeacherById(this.teacherId).subscribe(teacher => {
-            this.teacherForm.patchValue({
-                firstName: teacher.firstName,
-                lastName: teacher.lastName,
-                email: teacher.email,
-                phone: teacher.phone,
-                department: teacher.department
-            });
-        });
+        this.loadTeacher();
     }
 
     save(): void {
-        if (this.teacherForm.valid) {
-            this.teacherService.updateTeacher(this.teacherId, this.teacherForm.value).subscribe(() => {
+        if (this.teacherForm.invalid) {
+            this.snackBar.open('Veuillez remplir tous les champs obligatoires.', 'Fermer', { duration: 3000 });
+            return;
+        }
+
+        // Mettre à jour dans les fake données
+        const teachers = this.fakeTeacherService.getTeachers();
+        const teacherIndex = teachers.findIndex(t => t.id === this.teacherId);
+        if (teacherIndex !== -1) {
+            teachers[teacherIndex] = {
+                ...teachers[teacherIndex],
+                ...this.teacherForm.value,
+                updatedAt: new Date().toISOString().split('T')[0]
+            };
+            this.snackBar.open('Professeur modifié avec succès.', 'Fermer', { duration: 2000 });
+            setTimeout(() => {
                 this.router.navigate(['/list-teachers']);
-            });
+            }, 500);
         }
     }
 }

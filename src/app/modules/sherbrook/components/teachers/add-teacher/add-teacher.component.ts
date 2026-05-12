@@ -5,9 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { TeacherService } from '../../../service/teacher.service';
+import { FakeTeacherService } from '../../../service/fake-teacher.service';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatIconModule
   ],
@@ -28,10 +30,11 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AddTeacherComponent implements OnInit {
   teacherForm!: FormGroup;
+  departments: string[] = ['Informatique', 'Mathématiques', 'Physique', 'Chimie', 'Biologie'];
 
   constructor(
       private fb: FormBuilder,
-      private teacherService: TeacherService,
+      private fakeTeacherService: FakeTeacherService,
       private router: Router,
       private snackBar: MatSnackBar
   ) {}
@@ -48,19 +51,24 @@ export class AddTeacherComponent implements OnInit {
 
   save(): void {
     if (this.teacherForm.invalid) {
+      this.snackBar.open('Veuillez remplir tous les champs obligatoires.', 'Fermer', { duration: 3000 });
       return;
     }
 
-    this.teacherService.addTeacher(this.teacherForm.value).subscribe(
-        () => {
-          this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', { duration: 3000 });
+    const teacherData = this.teacherForm.value;
+
+    this.fakeTeacherService.addTeacher(teacherData).subscribe({
+      next: () => {
+        this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', { duration: 2000 });
+        setTimeout(() => {
           this.router.navigate(['/list-teachers']);
-        },
-        (err) => {
-          this.snackBar.open('Erreur lors de l’ajout du professeur.', 'Fermer', { duration: 3000 });
-          console.error(err);
-        }
-    ); // ✅ version concise
+        }, 500);
+      },
+      error: (err) => {
+        this.snackBar.open('Erreur lors de l\'ajout du professeur.', 'Fermer', { duration: 3000 });
+        console.error(err);
+      }
+    });
   }
 
   reset(): void {

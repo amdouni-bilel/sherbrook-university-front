@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TeacherService} from "../../../service/teacher.service";
+import {FakeTeacherService} from "../../../service/fake-teacher.service";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatDrawerContainer} from "@angular/material/sidenav";
 import {MatTooltip} from "@angular/material/tooltip";
@@ -35,37 +35,22 @@ import {TeacherModel} from "../../../models/teacher.model";
   styleUrls: ['./list-teachers.component.scss']
 })
 export class ListTeachersComponent implements OnInit {
-  teachers: TeacherModel[] = [];   // ✅ utilisé ici comme type
-  loading: boolean = true;
+  teachers: TeacherModel[] = [];
+  loading: boolean = false;
   error: string | null = null;
 
-  constructor(private readonly teacherService: TeacherService) {}
+  constructor(private readonly fakeTeacherService: FakeTeacherService) {}
 
   ngOnInit(): void {
-    this.loadTeachers();
-  }
-
-  loadTeachers(): void {
-    this.teacherService.getAllTeachers().subscribe({
-      next: (teachers) => {
-        this.teachers = teachers;
-        this.loading = false;
-        console.log('Professeurs chargés :', this.teachers);
-      },
-      error: (err) => {
-        this.error = 'Erreur lors du chargement des professeurs';
-        this.loading = false;
-        console.error(err);
-      }
-    });
+    this.teachers = this.fakeTeacherService.getTeachers();
   }
 
   deleteTeacher(teacherId: number): void {
     const confirmDelete = window.confirm('Êtes-vous sûr de vouloir supprimer ce professeur ?');
     if (confirmDelete) {
-      this.teacherService.deleteTeacher(teacherId).subscribe({
+      this.fakeTeacherService.deleteTeacher(teacherId).subscribe({
         next: () => {
-          this.teachers = this.teachers.filter(teacher => teacher.id !== teacherId);
+          this.teachers = this.fakeTeacherService.getTeachers();
         },
         error: (err) => {
           console.error('Erreur lors de la suppression :', err);

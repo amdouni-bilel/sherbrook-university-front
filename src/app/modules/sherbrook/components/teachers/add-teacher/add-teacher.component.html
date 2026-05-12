@@ -17,7 +17,7 @@
     <div class="flex flex-wrap gap-4 w-full">
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" autocomplete="off" />
+            <input matInput formControlName="email" type="email" autocomplete="off" />
         </mat-form-field>
 
         <mat-form-field class="flex-1 min-w-[200px]">
@@ -29,7 +29,12 @@
     <div class="flex flex-wrap gap-4 w-full">
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Département</mat-label>
-            <input matInput formControlName="department" autocomplete="off" />
+            <mat-select formControlName="department">
+                <mat-option value="">-- Sélectionner un département --</mat-option>
+                <mat-option *ngFor="let dept of departments" [value]="dept">
+                    {{ dept }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
 

@@ -79,10 +79,10 @@ else
     defaultMenu= [
         {
             id: 'dashboards',
-            title: 'Bloc Notes',
-            subtitle: 'Mes notes',
+            title: 'Université de Sherbrooke',
+            subtitle: 'Gestion universitaire',
             type: 'group',
-            icon: 'heroicons_outline:home',
+            icon: 'heroicons_outline:academic-cap',
             children: [
                 {
                     id: 'dashboards.teachers',
@@ -95,7 +95,7 @@ else
                     id: 'dashboards.administrators',
                     title: 'Administrateurs',
                     type: 'basic',
-                    icon: 'heroicons_outline:user-group',
+                    icon: 'heroicons_outline:shield-check',
                     link: '/list-administrators',
                 }
                 ,
@@ -103,7 +103,7 @@ else
                     id: 'dashboards.students',
                     title: 'Etudiants',
                     type: 'basic',
-                    icon: 'heroicons_outline:user-group',
+                    icon: 'heroicons_outline:academic-cap',
                     link: '/list-students',
                 }
             ],
@@ -1676,4 +1676,3 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         children: [], // This will be filled from defaultNavigation so we don't have to manage multiple sets of the same navigation
     },
 ];
- 
