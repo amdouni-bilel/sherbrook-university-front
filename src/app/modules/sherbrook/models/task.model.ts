@@ -1,7 +1,8 @@
 export interface TaskModel {
     id: number;
     title: string;
-    content: string;
+    description: string;
+    status: string;
     createdAt: string;
     updatedAt: string;
 }

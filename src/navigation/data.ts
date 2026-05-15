@@ -84,18 +84,12 @@ else
             type: 'group',
             icon: 'heroicons_outline:academic-cap',
             children: [
-                {
-                    id: 'dashboards.teachers',
-                    title: 'Enseignants',
-                    type: 'basic',
-                    icon: 'heroicons_outline:clipboard-document-check',
-                    link: '/list-teachers',
-                },
+
                 {
                     id: 'dashboards.administrators',
                     title: 'Utilisateurs',
                     type: 'basic',
-                    icon: 'heroicons_outline:shield-check',
+                    icon: 'heroicons_outline:user-group',
                     link: '/list-users',
                 }
                 ,

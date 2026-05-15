@@ -80,13 +80,13 @@ export const appRoutes: Route[] = [
             initialData: initialDataResolver
         },
         children: [
-// 
                   {path: 'list-users', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
                   {path: 'list-administrators', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
                   {path: 'list-students', loadChildren: () => import('app/modules/sherbrook/components/users/list-users/list-users-components.routes')},
                   {path: 'add-user', loadChildren: () => import('app/modules/sherbrook/components/users/add-user/add-user-components.routes')},
                   {path: 'list-tasks', loadChildren: () => import('app/modules/sherbrook/components/tasks/list-tasks/list-tasks-components.routes')},
                   {path: 'add-task', loadChildren: () => import('app/modules/sherbrook/components/tasks/add-task/add-tasks-components.routes')},
+                  { path: 'update-task/:id', loadChildren: () => import('app/modules/sherbrook/components/tasks/update-task/update-task-components.routes') },
                   { path: 'update-user/:id', loadChildren: () => import('app/modules/sherbrook/components/users/update-user/update-user-components.routes') },
                   {path: 'list-teachers', loadChildren: () => import('app/modules/sherbrook/components/teachers/list-teachers/list-teachers-components.routes')},
                   {path: 'add-teacher', loadChildren: () => import('app/modules/sherbrook/components/teachers/add-teacher/add-teacher-components.routes')},
