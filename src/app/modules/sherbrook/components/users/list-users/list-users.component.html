@@ -10,12 +10,12 @@
             <div class="min-w-0 flex-1">
                 <div class="flex flex-wrap items-center font-medium">
                     <div>
-                        <a class="whitespace-nowrap text-primary-500">Gestion des utilisateurs</a>
+                        <a class="whitespace-nowrap text-primary-500">Gestion des administrateurs</a>
                     </div>
                 </div>
                 <div class="mt-2">
                     <h2 class="truncate text-3xl font-extrabold leading-7 tracking-tight sm:leading-10 md:text-4xl">
-                        Ajouter un utilisateur
+                        Ajouter un administrateur
                     </h2>
                 </div>
             </div>
@@ -26,9 +26,9 @@
                         mat-flat-button
                         color="primary"
                         class="rounded-full"
-                        [routerLink]="['/add-user']">
+                        [routerLink]="['/add-admin']">
                     <mat-icon class="mr-2">add</mat-icon>
-                    Ajouter un utilisateur
+                    Ajouter un administrateur
                 </button>
             </div>
         </div>
@@ -52,6 +52,7 @@
                                 <th class="px-6 py-3 text-left">Email</th>
                                 <th class="px-6 py-3 text-left">Téléphone</th>
                                 <th class="px-6 py-3 text-left">Département</th>
+                                <th class="px-6 py-3 text-left">Grade</th>
                                 <th class="px-6 py-3 text-left">Créé le</th>
                                 <th class="px-6 py-3 text-left">Actions</th>
                             </tr>
@@ -64,6 +65,7 @@
                                 <td class="px-6 py-4">{{ user.email }}</td>
                                 <td class="px-6 py-4">{{ user.phone || '--' }}</td>
                                 <td class="px-6 py-4">{{ user.department || '--' }}</td>
+                                <td class="px-6 py-4">{{ user.grade || '--' }}</td>
                                 <td class="px-6 py-4">{{ user.createdAt }}</td>
                                 <td class="px-6 py-4">
                                     <button

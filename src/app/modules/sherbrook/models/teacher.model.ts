@@ -3,9 +3,9 @@ export interface TeacherModel {
     firstName: string;
     lastName: string;
     email: string;
-    phone?: string;
+    tel?: string;
     department?: string;
+    grade?: string;
     createdAt: string;
     updatedAt: string;
 }
-

@@ -18,12 +18,7 @@
 
         <!-- Bouton retour -->
         <div class="mt-4 sm:mt-0">
-            <button
-                    mat-flat-button
-                    color="accent"
-                    class="rounded-full"
-                    [routerLink]="['/list-users']"
-            >
+            <button mat-flat-button color="accent" class="rounded-full" [routerLink]="['/list-users']">
                 <mat-icon class="mr-2">arrow_back</mat-icon>
                 Retourner à la liste
             </button>
@@ -33,10 +28,7 @@
     <!-- Form -->
     <div class="flex-auto p-6 sm:p-10">
         <div class="w-full">
-            <form
-                    class="bg-white mt-8 flex w-full flex-col space-y-6 rounded-2xl p-8 shadow"
-                    [formGroup]="userForm"
-            >
+            <form class="bg-white mt-8 flex w-full flex-col space-y-6 rounded-2xl p-8 shadow" [formGroup]="userForm">
 
                 <!-- Inputs côte à côte -->
                 <div class="flex flex-wrap gap-4 w-full">
@@ -64,11 +56,22 @@
                     </mat-form-field>
                 </div>
 
-                <!-- Département -->
+                <!-- Département (multi-select) et Grade -->
                 <div class="flex flex-wrap gap-4 w-full">
                     <mat-form-field class="flex-1 min-w-[200px]">
-                        <mat-label>Département</mat-label>
-                        <input matInput formControlName="department" autocomplete="off" />
+                        <mat-label>Départements</mat-label>
+                        <mat-select formControlName="departments" multiple>
+                            <mat-option value="informatique">Informatique</mat-option>
+                            <mat-option value="maths">Mathématiques</mat-option>
+                            <mat-option value="physique">Physique</mat-option>
+                            <mat-option value="chimie">Chimie</mat-option>
+                            <mat-option value="biologie">Biologie</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-1 min-w-[200px]">
+                        <mat-label>Grade</mat-label>
+                        <input matInput formControlName="grade" autocomplete="off" />
                     </mat-form-field>
                 </div>
 

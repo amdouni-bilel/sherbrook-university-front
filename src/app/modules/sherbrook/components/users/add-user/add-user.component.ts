@@ -5,10 +5,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {Router, RouterLink} from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {UserService} from "../../../service/user.service";
-import {MatIconModule} from "@angular/material/icon";
+import { UserService } from "../../../service/user.service";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSelectModule } from '@angular/material/select';   // ✅ import nécessaire
+import { MatOptionModule } from '@angular/material/core';     // ✅ import nécessaire
 
 @Component({
   selector: 'app-add-user',
@@ -22,10 +24,12 @@ import {MatIconModule} from "@angular/material/icon";
     MatCheckboxModule,
     MatSnackBarModule,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.scss'
+  styleUrls: ['./add-user.component.scss']   // ✅ correction : styleUrls
 })
 export class AddUserComponent implements OnInit {
   userForm!: FormGroup;
@@ -43,20 +47,20 @@ export class AddUserComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      department: ['']
+      grade: [''],
+      departments: [[]]   // ✅ tableau pour multi-select
     });
   }
 
   save(): void {
-    if (this.userForm.invalid)
-      return;
+    if (this.userForm.invalid) return;
 
     this.userService.addUser(this.userForm.value).subscribe({
-      next: (user) => {
+      next: () => {
         this.snackBar.open('Utilisateur ajouté avec succès.', 'Fermer', {
           duration: 3000
         });
-        this.router.navigate(['/list-users']); // rediriger vers la liste après ajout
+        this.router.navigate(['/list-users']);
       },
       error: (err) => {
         console.error('Erreur lors de l’ajout', err);
@@ -68,6 +72,8 @@ export class AddUserComponent implements OnInit {
   }
 
   reset(): void {
-    this.userForm.reset();
+    this.userForm.reset({
+      departments: []   // ✅ réinitialiser le multi-select
+    });
   }
 }

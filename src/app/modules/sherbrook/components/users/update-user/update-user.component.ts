@@ -41,7 +41,8 @@ export class UpdateUserComponent implements OnInit {
             lastName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             phone: [''],
-            department: ['']
+            department: [''],
+            grade: ['']
         });
 
         this.userId = +this.route.snapshot.paramMap.get('id')!;
@@ -51,7 +52,8 @@ export class UpdateUserComponent implements OnInit {
                 lastName: user.lastName,
                 email: user.email,
                 phone: user.phone,
-                department: user.department
+                department: user.department,
+                grade: user.grade
             });
         });
     }
@@ -63,7 +65,8 @@ export class UpdateUserComponent implements OnInit {
                 lastName: user.lastName,
                 email: user.email,
                 phone: user.phone,
-                department: user.department
+                department: user.department,
+                grade: user.grade
             });
         });
     }

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TeacherService } from '../../../service/teacher.service';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-add-teacher',
@@ -21,13 +22,25 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   templateUrl: './add-teacher.component.html',
   styleUrls: ['./add-teacher.component.scss']
 })
 export class AddTeacherComponent implements OnInit {
   teacherForm!: FormGroup;
+  departments: string[] = [
+    'Informatique',
+    'Mathématiques',
+    'Sciences',
+    'Littérature',
+    'Histoire',
+    'Philosophie',
+    'Chimie',
+    'Physique',
+    'Biologie'
+  ];
 
   constructor(
       private fb: FormBuilder,
@@ -41,8 +54,9 @@ export class AddTeacherComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tel: [''],
-      department: ['']
+      phone: [''],
+      department: [''],
+      grade: ['']
     });
   }
 

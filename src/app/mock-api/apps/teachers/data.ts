@@ -7,6 +7,7 @@ export const teachers = [
         email: 'helakallel0@gmail.com',
         phone: '77885266',
         department: 'physique',
+        grade: 'Professeur titulaire',
         createdAt: new Date('2024-01-10'),
         updatedAt: new Date('2024-05-20')
     },
@@ -17,6 +18,7 @@ export const teachers = [
         email: 'yassine.ghedira@company.com',
         phone: '+1 234 567 8910',
         department: 'Chimie',
+        grade: 'Maître de conférences',
         createdAt: new Date('2024-02-15'),
         updatedAt: new Date('2024-05-19')
     },
@@ -27,6 +29,7 @@ export const teachers = [
         email: 'fatima.benali@company.com',
         phone: '+1 234 567 8911',
         department: 'Biologie',
+        grade: 'Professeur titulaire',
         createdAt: new Date('2024-03-20'),
         updatedAt: new Date('2024-05-17')
     },
@@ -37,6 +40,7 @@ export const teachers = [
         email: 'ahmed.soudi@company.com',
         phone: '+1 234 567 8912',
         department: 'Géologie',
+        grade: 'Maître de conférences',
         createdAt: new Date('2024-01-25'),
         updatedAt: new Date('2024-05-16')
     },
@@ -47,8 +51,8 @@ export const teachers = [
         email: 'nadia.saidi@company.com',
         phone: '+1 234 567 8913',
         department: 'Astronomie',
+        grade: 'Professeur assistant',
         createdAt: new Date('2024-04-05'),
         updatedAt: new Date('2024-05-23')
     }
 ];
-

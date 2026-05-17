@@ -46,6 +46,7 @@
                             <th class="px-6 py-3 text-left">Email</th>
                             <th class="px-6 py-3 text-left">Téléphone</th>
                             <th class="px-6 py-3 text-left">Département</th>
+                            <th class="px-6 py-3 text-left">Grade</th>
                             <th class="px-6 py-3 text-left">Créé le</th>
                             <th class="px-6 py-3 text-left">Actions</th>
                         </tr>
@@ -56,8 +57,9 @@
                             <td class="px-6 py-4">{{ teacher.firstName }}</td>
                             <td class="px-6 py-4">{{ teacher.lastName }}</td>
                             <td class="px-6 py-4">{{ teacher.email }}</td>
-                            <td class="px-6 py-4">{{ teacher.phone || '--' }}</td>
+                            <td class="px-6 py-4">{{ teacher.tel || '--' }}</td>
                             <td class="px-6 py-4">{{ teacher.department || '--' }}</td>
+                            <td class="px-6 py-4">{{ teacher.grade || '--' }}</td>
                             <td class="px-6 py-4">{{ teacher.createdAt }}</td>
                             <td class="px-6 py-4 flex gap-2">
                                 <button

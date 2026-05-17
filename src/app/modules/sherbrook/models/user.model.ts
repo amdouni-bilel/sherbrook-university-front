@@ -5,6 +5,7 @@ export interface UserModel {
     email: string;
     phone?: string;
     department?: string;
+    grade?: string;
     createdAt: string;
     updatedAt: string;
 }

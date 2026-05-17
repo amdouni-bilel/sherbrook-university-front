@@ -1,1 +1,39 @@
-<p>administrators works!</p>
+<!-- Sous-titre -->
+<p class="text-sm text-blue-600 font-medium mb-1">Gestion des utilisateurs</p>
+<!-- Titre principal -->
+<h1 class="text-3xl font-bold mb-6">Ajouter un administrateur</h1>
+<!-- Bouton Ajouter -->
+<div class="flex justify-end mb-4">
+  <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full">
+    + Ajouter un administrateur
+  </button>
+</div>
+<!-- Tableau des administrateurs -->
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+    <thead>
+      <tr class="bg-gray-100 text-gray-700 text-left">
+        <th class="py-3 px-4">ID</th>
+        <th class="py-3 px-4">Prénom</th>
+        <th class="py-3 px-4">Nom</th>
+        <th class="py-3 px-4">Email</th>
+        <th class="py-3 px-4">Téléphone</th>
+        <th class="py-3 px-4">Département</th>
+        <th class="py-3 px-4">Grade</th>
+        <th class="py-3 px-4">Créé le</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-t" *ngFor="let admin of admins">
+        <td class="py-2 px-4">{{admin.id}}</td>
+        <td class="py-2 px-4">{{admin.firstName}}</td>
+        <td class="py-2 px-4">{{admin.lastName}}</td>
+        <td class="py-2 px-4">{{admin.email}}</td>
+        <td class="py-2 px-4">{{admin.phone}}</td>
+        <td class="py-2 px-4">{{admin.department}}</td>
+        <td class="py-2 px-4">{{admin.grade}}</td>
+        <td class="py-2 px-4">{{admin.createdAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

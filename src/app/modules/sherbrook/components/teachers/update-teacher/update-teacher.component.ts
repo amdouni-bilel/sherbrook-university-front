@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import {TeacherService} from '../../../service/teacher.service';
 
 @Component({
@@ -18,7 +19,8 @@ import {TeacherService} from '../../../service/teacher.service';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatSelectModule
     ],
     templateUrl: './update-teacher.component.html',
     styleUrl: './update-teacher.component.scss'
@@ -26,6 +28,17 @@ import {TeacherService} from '../../../service/teacher.service';
 export class UpdateTeacherComponent implements OnInit {
     teacherForm!: FormGroup;
     teacherId!: number;
+    departments: string[] = [
+        'Informatique',
+        'Mathématiques',
+        'Sciences',
+        'Littérature',
+        'Histoire',
+        'Philosophie',
+        'Chimie',
+        'Physique',
+        'Biologie'
+    ];
 
     constructor(
         private fb: FormBuilder,
@@ -41,7 +54,8 @@ export class UpdateTeacherComponent implements OnInit {
             lastName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             phone: [''],
-            department: ['']
+            department: [''],
+            grade: ['']
         });
 
         this.teacherId = +this.route.snapshot.paramMap.get('id')!;
@@ -50,8 +64,9 @@ export class UpdateTeacherComponent implements OnInit {
                 firstName: teacher.firstName,
                 lastName: teacher.lastName,
                 email: teacher.email,
-                phone: teacher.phone,
-                department: teacher.department
+                tel: teacher.tel,
+                department: teacher.department,
+                grade: teacher.grade
             });
         });
     }
@@ -62,8 +77,9 @@ export class UpdateTeacherComponent implements OnInit {
                 firstName: teacher.firstName,
                 lastName: teacher.lastName,
                 email: teacher.email,
-                phone: teacher.phone,
-                department: teacher.department
+                phone: teacher.tel,
+                department: teacher.department,
+                grade: teacher.grade
             });
         });
     }
@@ -76,4 +92,3 @@ export class UpdateTeacherComponent implements OnInit {
         }
     }
 }
-
