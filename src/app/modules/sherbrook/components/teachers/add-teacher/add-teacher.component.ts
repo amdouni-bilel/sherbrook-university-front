@@ -41,12 +41,13 @@ export class AddTeacherComponent implements OnInit {
     'Physique',
     'Biologie'
   ];
+  statuses: string[] = ['ACTIVE', 'INACTIVE', 'ON_LEAVE'];
 
   constructor(
-      private fb: FormBuilder,
-      private teacherService: TeacherService,
-      private router: Router,
-      private snackBar: MatSnackBar
+      private readonly fb: FormBuilder,
+      private readonly teacherService: TeacherService,
+      private readonly router: Router,
+      private readonly snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -54,30 +55,43 @@ export class AddTeacherComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      department: [''],
-      grade: ['']
+      tel: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      speciality: ['', Validators.required],
+      birthday: ['', Validators.required],
+      grade: ['', Validators.required],
+      department: ['', Validators.required],
+      adress: ['', Validators.required],
+      status: ['ACTIVE', Validators.required]
     });
   }
 
   save(): void {
     if (this.teacherForm.invalid) {
+      this.snackBar.open('Veuillez remplir tous les champs correctement.', 'Fermer', { duration: 3000 });
       return;
     }
 
-    this.teacherService.addTeacher(this.teacherForm.value).subscribe(
-        () => {
-          this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', { duration: 3000 });
+    const teacherData = {
+      ...this.teacherForm.value,
+      role: 'TEACHER'
+    };
+
+    this.teacherService.addTeacher(teacherData).subscribe({
+      next: () => {
+        this.snackBar.open('Professeur ajouté avec succès.', 'Fermer', { duration: 2000 });
+        setTimeout(() => {
           this.router.navigate(['/list-teachers']);
-        },
-        (err) => {
-          this.snackBar.open('Erreur lors de l’ajout du professeur.', 'Fermer', { duration: 3000 });
-          console.error(err);
-        }
-    ); // ✅ version concise
+        }, 500);
+      },
+      error: (err) => {
+        this.snackBar.open('Erreur lors de l\'ajout du professeur.', 'Fermer', { duration: 3000 });
+        console.error(err);
+      }
+    });
   }
 
   reset(): void {
-    this.teacherForm.reset();
+    this.teacherForm.reset({'status': 'ACTIVE'});
   }
 }

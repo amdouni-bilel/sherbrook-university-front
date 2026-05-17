@@ -2,30 +2,59 @@
         class="bg-white mt-8 flex w-full flex-col space-y-6 rounded-2xl p-8 shadow"
         [formGroup]="teacherForm"
 >
+    <!-- Prénom / Nom -->
     <div class="flex flex-wrap gap-4 w-full">
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Prénom</mat-label>
-            <input matInput formControlName="firstName" autocomplete="off" />
+            <input matInput formControlName="firstName" type="text" autocomplete="off" />
         </mat-form-field>
 
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Nom</mat-label>
-            <input matInput formControlName="lastName" autocomplete="off" />
+            <input matInput formControlName="lastName" type="text" autocomplete="off" />
         </mat-form-field>
     </div>
 
+    <!-- Email / Téléphone -->
     <div class="flex flex-wrap gap-4 w-full">
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" autocomplete="off" />
+            <input matInput formControlName="email" type="email" autocomplete="off" />
         </mat-form-field>
 
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Téléphone</mat-label>
-            <input matInput formControlName="phone" autocomplete="off" />
+            <input matInput formControlName="tel" type="tel" autocomplete="off" />
         </mat-form-field>
     </div>
 
+    <!-- Mot de passe / Spécialité -->
+    <div class="flex flex-wrap gap-4 w-full">
+        <mat-form-field class="flex-1 min-w-[200px]">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput formControlName="password" type="password" autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="flex-1 min-w-[200px]">
+            <mat-label>Spécialité</mat-label>
+            <input matInput formControlName="speciality" type="text" autocomplete="off" />
+        </mat-form-field>
+    </div>
+
+    <!-- Date d'anniversaire / Grade -->
+    <div class="flex flex-wrap gap-4 w-full">
+        <mat-form-field class="flex-1 min-w-[200px]">
+            <mat-label>Date d'anniversaire</mat-label>
+            <input matInput formControlName="birthday" type="date" />
+        </mat-form-field>
+
+        <mat-form-field class="flex-1 min-w-[200px]">
+            <mat-label>Grade</mat-label>
+            <input matInput formControlName="grade" type="number" step="0.1" autocomplete="off" />
+        </mat-form-field>
+    </div>
+
+    <!-- Département / Statut -->
     <div class="flex flex-wrap gap-4 w-full">
         <mat-form-field class="flex-1 min-w-[200px]">
             <mat-label>Département</mat-label>
@@ -38,11 +67,24 @@
         </mat-form-field>
 
         <mat-form-field class="flex-1 min-w-[200px]">
-            <mat-label>Grade</mat-label>
-            <input matInput formControlName="grade" autocomplete="off" />
+            <mat-label>Statut</mat-label>
+            <mat-select formControlName="status">
+                <mat-option *ngFor="let status of statuses" [value]="status">
+                    {{ status }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
 
+    <!-- Adresse -->
+    <div class="flex flex-wrap gap-4 w-full">
+        <mat-form-field class="flex-1 min-w-[200px]">
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="adress" type="text" autocomplete="off" />
+        </mat-form-field>
+    </div>
+
+    <!-- Boutons -->
     <div class="mt-6 flex w-full items-center justify-end">
         <button (click)="reset()" type="button" mat-button>Réinitialiser</button>
         <button (click)="save()" class="ml-2" type="button" mat-flat-button color="primary">
